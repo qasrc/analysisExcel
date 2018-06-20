@@ -1,11 +1,16 @@
 package com.realcan;
 
-public interface ExcelAnalysis {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class ExcelAnalysis {
+
+    static List<String> result = new ArrayList<>(100);
 
     /**
      * 解析文件
      * @param filePath excel文件路径
      */
-    void analysis(String filePath,String sheetName);
+    abstract void analysis(String filePath, String sheetName);
 
 }
