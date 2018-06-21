@@ -1,6 +1,8 @@
 package com.realcan;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class SupplierZhAnalysis extends ExcelAnalysis {
     @Override
@@ -10,6 +12,8 @@ public class SupplierZhAnalysis extends ExcelAnalysis {
             result.add("");
         }
         result.add("-------------------suppliers-zh.impex    start-----------------");
+        //使用set集合去除重复数据
+        Set<String> strings = new HashSet<>();
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";;")
@@ -19,8 +23,9 @@ public class SupplierZhAnalysis extends ExcelAnalysis {
                     .append(";")
                     .append(mapDatum.get(CellTypeEnum.COMMONNAME.getDescription()))
                     .append(";");
-            result.add(stringBuilder.toString());
+            strings.add(stringBuilder.toString());
         }
+        result.addAll(strings);
         for (int i = 0; i < 3; i++) {
             result.add("");
         }
