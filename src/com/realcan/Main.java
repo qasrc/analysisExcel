@@ -46,7 +46,9 @@ public class Main {
         if (StringUtils.isBlank(unitSheet)) {
             unitSheet = "Sheet1";
         }
-
+        System.out.println("----------------------------");
+        System.out.println("请选择生成impex文件类型：1.baseProduct   2.extendProduct");
+        String category = input.nextLine();
         System.out.println("开始初始化生产厂商对照表数据");
         ExcelUtil.initManufacturerData(maPath, maSheet);
         System.out.println("初始化生产厂商对照表数据完成");
@@ -54,7 +56,8 @@ public class Main {
         ExcelUtil.initUnitData(unitFilePath, unitSheet);
         System.out.println("初始化计量单位对照表数据完成");
         System.out.println("开始解析产品列表文件");
-        AnalysisStrategy analysisStrategy = AnalysisStrategy.getAnalysisStrategy();
+
+        AnalysisStrategy analysisStrategy = AnalysisStrategy.getAnalysisStrategy(category);
         analysisStrategy.analysis(filePath, fileSheet);
         System.out.println("解析产品列表文件完成");
 

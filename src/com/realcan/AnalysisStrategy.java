@@ -9,38 +9,61 @@ public class AnalysisStrategy {
     private AnalysisStrategy() {
     }
 
-    static AnalysisStrategy getAnalysisStrategy() {
+    private static String CATEGORY = "";
+
+    static AnalysisStrategy getAnalysisStrategy(String category) {
+        AnalysisStrategy.CATEGORY = category;
         return analysisStrategy;
     }
 
     public void analysis(String filePath, String sheetName) {
-        //------------解析products-----------------
         ExcelAnalysis excelAnalysis = new ProductAnalysis();
+        //------------解析products-----------------
         excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析classification-----------
-        excelAnalysis = new ClassificationAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+        if ("1".equals(CATEGORY)) {
+            //------------解析classification-----------
+            excelAnalysis = new ClassificationAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析price-------------------
-        excelAnalysis = new PriceAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+            //------------解析price-------------------
+            excelAnalysis = new PriceAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析stocklevels--------------
-        excelAnalysis = new StockLevelsAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+            //------------解析stocklevels--------------
+            excelAnalysis = new StockLevelsAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析productZh---------------
-        excelAnalysis = new ProductZhAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+            //------------解析productZh---------------
+            excelAnalysis = new ProductZhAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析suppliers---------------
-        excelAnalysis = new SuppliersAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+            //------------解析suppliers---------------
+            excelAnalysis = new SuppliersAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
 
-        //------------解析suppliersZh-------------
-        excelAnalysis = new SupplierZhAnalysis();
-        excelAnalysis.analysis(filePath, sheetName);
+            //------------解析suppliersZh-------------
+            excelAnalysis = new SupplierZhAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+        } else {
+
+            //------------解析product.impex------------------
+            excelAnalysis = new ProductExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析products-classification_zh.impex-------
+            excelAnalysis = new ClassificationExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析products-prices.impex----------------
+            excelAnalysis = new PriceExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析stockLevels.impex-----------------
+            excelAnalysis = new StockLevelsExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+        }
+
 
         this.writeFile(excelAnalysis);
         System.out.println("结果已写入文件，路径：/Users/zhangzhan/realcanwork/hybris开发/result.impex");
