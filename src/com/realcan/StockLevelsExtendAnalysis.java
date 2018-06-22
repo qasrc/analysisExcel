@@ -18,7 +18,7 @@ public class StockLevelsExtendAnalysis extends ExcelAnalysis {
             StringBuilder product = new StringBuilder();
             stocklevels.append(";")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17")
                     .append(";pw_warehouse_e;")
@@ -26,12 +26,12 @@ public class StockLevelsExtendAnalysis extends ExcelAnalysis {
                     .append(";notSpecified");
             product.append(";")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17")
                     .append(";")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17")
                     .append(":pw_warehouse_e");

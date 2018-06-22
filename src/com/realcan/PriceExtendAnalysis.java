@@ -13,7 +13,7 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
                     .append(datum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(datum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17")
                     .append(";B2B_DEFAULT_PRICE_GROUP 1 pieces = ")

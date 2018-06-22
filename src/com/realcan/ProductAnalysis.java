@@ -21,6 +21,7 @@ public class ProductAnalysis extends ExcelAnalysis {
                     .append(datum.get(CellTypeEnum.COMMONNAME.getDescription()))
                     .append(",")
                     .append(datum.get(CellTypeEnum.BRAND.getDescription()))
+                    .append("B2B_Seller")
                     .append(";")
                     .append(ExcelUtil.getSupplierNameById(datum.get(CellTypeEnum.MANUFACTURER.getDescription())))
                     .append(";")

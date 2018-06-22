@@ -21,7 +21,7 @@ public class ClassificationExtendAnalysis extends ExcelAnalysis {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
                     .append(datum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(datum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17")
                     .append(";")

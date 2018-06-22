@@ -13,7 +13,7 @@ public class ProductExtendAnalysis extends ExcelAnalysis {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("#")
+                    .append("_")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17;")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
