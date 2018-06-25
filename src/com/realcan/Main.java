@@ -47,7 +47,7 @@ public class Main {
             unitSheet = "Sheet1";
         }
         System.out.println("----------------------------");
-        System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/电商平台用户测试数据.xlsx）:");
+        System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/电商平台用户测试数据.xlsx），需要将后两列改为描述1和名称 2:");
         String userFilePath = input.nextLine();
         if (StringUtils.isBlank(userFilePath)) {
             userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/电商平台用户测试数据.xlsx";
