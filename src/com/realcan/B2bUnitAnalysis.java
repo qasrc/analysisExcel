@@ -26,7 +26,7 @@ public class B2bUnitAnalysis extends ExcelAnalysis {
                     .append(userMapDatum.get(UserCellTypeEnum.HOSPITAL_NAME.getDescription()))
                     .append(";")
                     .append(userMapDatum.get(UserCellTypeEnum.COMPANYID.getDescription()))
-                    .append("-30-17")
+                    .append("-30-17_sellerOrg")
                     .append(";;RealcanAddrID_")
                     .append(userMapDatum.get(UserCellTypeEnum.SHIP_TO_ID.getDescription()))
                     .append(";RealcanID_")

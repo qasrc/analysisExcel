@@ -35,7 +35,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     .append(userMapDatum.get(UserCellTypeEnum.SOLD_TO_ID.getDescription()))
                     .append(";")
                     .append(userMapDatum.get(UserCellTypeEnum.COMPANYID.getDescription()))
-                    .append("-30-17");
+                    .append("-30-17_sellerOrg");
 
             tmp.add(stringBuilder.toString());
         }
