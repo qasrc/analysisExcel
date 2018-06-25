@@ -45,7 +45,7 @@ public class AnalysisStrategy {
             //------------解析suppliersZh-------------
             excelAnalysis = new SupplierZhAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
-        } else {
+        } else if ("2".equals(CATEGORY)) {
 
             //------------解析product.impex------------------
             excelAnalysis = new ProductExtendAnalysis();
@@ -61,6 +61,18 @@ public class AnalysisStrategy {
 
             //------------解析stockLevels.impex-----------------
             excelAnalysis = new StockLevelsExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+        } else {
+            //------------解析user-groups.impex > b2bunit-----------------
+            excelAnalysis = new B2bUnitAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析user-groups.impex > b2bcustomer------
+            excelAnalysis = new B2bCustomerAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析user-groups.impex > b2baddress----------------
+            excelAnalysis = new B2bAddressAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
         }
 

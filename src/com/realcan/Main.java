@@ -47,7 +47,17 @@ public class Main {
             unitSheet = "Sheet1";
         }
         System.out.println("----------------------------");
-        System.out.println("请选择生成impex文件类型：1.baseProduct   2.extendProduct");
+        System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/电商平台用户测试数据.xlsx）:");
+        String userFilePath = input.nextLine();
+        if (StringUtils.isBlank(userFilePath)) {
+            userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/电商平台用户测试数据.xlsx";
+        }
+        System.out.println("请输入用户列表Sheet名称（默认Sheet1）:");
+        String userSheet = input.nextLine();
+        if (StringUtils.isBlank(userSheet)) {
+            userSheet = "Sheet1";
+        }
+        System.out.println("请选择生成impex文件类型：1.baseProduct   2.extendProduct  3.用户测试数据");
         String category = input.nextLine();
         System.out.println("开始初始化生产厂商对照表数据");
         ExcelUtil.initManufacturerData(maPath, maSheet);
@@ -55,6 +65,9 @@ public class Main {
         System.out.println("开始初始化计量单位对照表数据");
         ExcelUtil.initUnitData(unitFilePath, unitSheet);
         System.out.println("初始化计量单位对照表数据完成");
+        System.out.println("开始初始化用户测试数据");
+        ExcelUtil.initUserData(userFilePath, userSheet);
+        System.out.println("初始化用户测试数据完成");
         System.out.println("开始解析产品列表文件");
 
         AnalysisStrategy analysisStrategy = AnalysisStrategy.getAnalysisStrategy(category);

@@ -17,6 +17,8 @@ public abstract class ExcelUtil {
     public static List<Map<String, String>> mapData = new ArrayList<>();
     public static Map<String, String> manufacturerMap = new HashMap<>();
     public static Map<String, String> unitMap = new HashMap<>();
+    public static List<String> userHeadList = new ArrayList<>();
+    public static List<Map<String, String>> userMapData = new ArrayList<>();
     /**
      * 标志初始化是否完成
      */
@@ -35,19 +37,7 @@ public abstract class ExcelUtil {
             List<String> list = new ArrayList<>(40);
             Map<String, String> map = new HashMap<>(40);
             Row row = sheet.getRow(i);
-            if (row != null) {
-                for (int j = 0; j < row.getLastCellNum(); j++) {
-                    Cell cell = row.getCell(j);
-                    if (i == 0) {
-                        //将标题添加到集合中
-                        columnHeadList.add(getCellValue(cell));
-                    } else {
-                        //将数据添加到集合中
-                        map.put(columnHeadList.get(j), getCellValue(cell));
-                    }
-                    list.add(getCellValue(cell));
-                }
-            }
+            putRowValue(i, list, map, row, columnHeadList);
             if (i > 0) {
                 mapData.add(map);
             }
@@ -55,6 +45,35 @@ public abstract class ExcelUtil {
         }
         flag = true;
     }
+
+    public static void initUserData(String userFilePath, String userSheet) {
+        Sheet sheet = loadSheet(userFilePath, userSheet);
+        int numOfRows = sheet.getLastRowNum() + 1;
+        for (int i = 0; i < numOfRows; i++) {
+            List<String> list = new ArrayList<>();
+            Map<String, String> map = new HashMap<>();
+            Row row = sheet.getRow(i);
+            putRowValue(i, list, map, row, userHeadList);
+            if (i > 0) {
+                userMapData.add(map);
+            }
+        }
+    }
+
+    private static void putRowValue(int i, List<String> list, Map<String, String> map, Row row, List<String> userHeadList) {
+        if (row != null) {
+            for (int j = 0; j < row.getLastCellNum(); j++) {
+                Cell cell = row.getCell(j);
+                if (i == 0) {
+                    userHeadList.add(getCellValue(cell));
+                } else {
+                    map.put(userHeadList.get(j), getCellValue(cell));
+                }
+                list.add(getCellValue(cell));
+            }
+        }
+    }
+
 
     /**
      * 生成100-1000内的随机数
@@ -190,4 +209,6 @@ public abstract class ExcelUtil {
             }
         }
     }
+
+
 }
