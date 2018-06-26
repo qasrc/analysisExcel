@@ -18,14 +18,11 @@ public class ProductExtendAnalysis extends ExcelAnalysis {
                     .append("-30-17;")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
                     .append(";;")
-                    .append(mapDatum.get(CellTypeEnum.COMMONNAME.getDescription()))
-                    .append(";")
-                    .append(mapDatum.get(CellTypeEnum.COMMONNAME.getDescription()))
+                    .append(mapDatum.get(CellTypeEnum.DESC.getDescription()))
                     .append(";;")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
                     .append("-30-17;")
-                    .append("approved;")
-                    .append(mapDatum.get(CellTypeEnum.DESC.getDescription()));
+                    .append("approved");
             result.add(stringBuilder.toString());
 
         }
