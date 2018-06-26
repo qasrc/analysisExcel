@@ -30,6 +30,10 @@ public class AnalysisStrategy {
             excelAnalysis = new PriceAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
+            //------------解析extend price------------
+            excelAnalysis = new PriceExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
             //------------解析stocklevels--------------
             excelAnalysis = new StockLevelsAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
@@ -44,6 +48,10 @@ public class AnalysisStrategy {
 
             //------------解析suppliersZh-------------
             excelAnalysis = new SupplierZhAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析unit---------------------
+            excelAnalysis = new UnitAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
         } else if ("2".equals(CATEGORY)) {
 

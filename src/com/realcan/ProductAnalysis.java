@@ -21,12 +21,14 @@ public class ProductAnalysis extends ExcelAnalysis {
                     .append(datum.get(CellTypeEnum.COMMONNAME.getDescription()))
                     .append(",")
                     .append(datum.get(CellTypeEnum.BRAND.getDescription()))
+                    .append(",")
                     .append("B2B_Seller")
                     .append(";")
                     .append(ExcelUtil.getSupplierNameById(datum.get(CellTypeEnum.MANUFACTURER.getDescription())))
                     .append(";")
                     .append(datum.get(CellTypeEnum.MANUFACTURER.getDescription()))
-                    .append(";;");
+                    .append(";;;")
+                    .append(ExcelUtil.getUnitNameByCode(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())));
             result.add(stringBuilder.toString());
         }
         result.add("---------------------------products.impex  end---------------------------------");
