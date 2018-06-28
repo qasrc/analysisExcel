@@ -11,7 +11,7 @@ public class B2bCustomerAnalysis extends ExcelAnalysis {
         for (int i = 0; i < 5; i++) {
             result.add("");
         }
-        result.add("--------------------customer start--------------");
+        result.add(">>>>>>>>>>>>>>>>>>>>> RealcanB2BCustomer start");
         Set<String> tmp = new HashSet<>();
         for (Map<String, String> userMapDatum : ExcelUtil.userMapData) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -32,6 +32,7 @@ public class B2bCustomerAnalysis extends ExcelAnalysis {
 
         }
         result.addAll(tmp);
-        result.add("---------------------customer end-----------------");
+        result.add(">>>>>>>>>>>>>>>>>>>>> RealcanB2BCustomer end");
+        result.add("------------------------user-groups.impex end------------------------");
     }
 }

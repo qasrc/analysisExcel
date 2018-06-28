@@ -13,7 +13,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
         for (int i = 0; i < 5; i++) {
             result.add("");
         }
-        result.add("----------------b2baddress start-----------------");
+        result.add(">>>>>>>>>>>>>>>>>>>> RealcanB2BAddress start");
         Set<String> tmp = new HashSet<>();
         for (Map<String, String> userMapDatum : ExcelUtil.userMapData) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -40,6 +40,6 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
             tmp.add(stringBuilder.toString());
         }
         result.addAll(tmp);
-        result.add("---------------b2baddress end-------------------");
+        result.add(">>>>>>>>>>>>>>>>>>> RealcanB2BAddress end");
     }
 }

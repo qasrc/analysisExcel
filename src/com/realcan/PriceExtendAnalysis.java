@@ -8,7 +8,7 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
         for (int i = 0; i < 5; i++) {
             result.add("");
         }
-        result.add("------------------------products-price.impex  extend start-----------------");
+        result.add("------------------------products-price.impex  start-----------------");
         for (Map<String, String> datum : ExcelUtil.mapData) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
@@ -23,6 +23,6 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
                     .append(" CNY Y;");
             result.add(stringBuilder.toString());
         }
-        result.add("-----------------------products-price.impex  extend end------------------");
+        result.add("-----------------------products-price.impex  end------------------");
     }
 }

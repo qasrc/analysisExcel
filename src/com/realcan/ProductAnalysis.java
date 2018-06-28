@@ -11,6 +11,8 @@ public class ProductAnalysis extends ExcelAnalysis {
         }
         List<Map<String, String>> data = ExcelUtil.mapData;
         result.add("---------------------------products.impex  start-----------------------------");
+        result.add("");
+        result.add(">>>>>>>>>>>>>>>>>ConsumableProduct start");
         for (Map<String, String> datum : data) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
@@ -31,7 +33,7 @@ public class ProductAnalysis extends ExcelAnalysis {
                     .append(ExcelUtil.getUnitNameByCode(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())));
             result.add(stringBuilder.toString());
         }
-        result.add("---------------------------products.impex  end---------------------------------");
+        result.add(">>>>>>>>>>>>>>>>>ConsumableProduct end");
 
     }
 }

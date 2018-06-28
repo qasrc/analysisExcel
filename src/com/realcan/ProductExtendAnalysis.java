@@ -8,7 +8,7 @@ public class ProductExtendAnalysis extends ExcelAnalysis {
         for (int i = 0; i < 3; i++) {
             result.add("");
         }
-        result.add("----------------------GenericVariantProduct    start----------------");
+        result.add(">>>>>>>>>>>>>>>>>> RealcanB2BSellerProduct start");
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
@@ -26,6 +26,7 @@ public class ProductExtendAnalysis extends ExcelAnalysis {
             result.add(stringBuilder.toString());
 
         }
-        result.add("--------------------GenericVariantProduct  end-----------------");
+        result.add(">>>>>>>>>>>>>>>>>> RealcanB2BSellerProduct end");
+        result.add("-----------------------products.impex   end-----------------------");
     }
 }

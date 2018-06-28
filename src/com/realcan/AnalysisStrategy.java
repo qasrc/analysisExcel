@@ -17,17 +17,25 @@ public class AnalysisStrategy {
     }
 
     public void analysis(String filePath, String sheetName) {
-        ExcelAnalysis excelAnalysis = new ProductAnalysis();
-        //------------解析products-----------------
-        excelAnalysis.analysis(filePath, sheetName);
 
+
+        ExcelAnalysis excelAnalysis = null;
         if ("1".equals(CATEGORY)) {
-            //------------解析classification-----------
-            excelAnalysis = new ClassificationAnalysis();
+
+            excelAnalysis = new ProductAnalysis();
+            //------------解析products-----------------
             excelAnalysis.analysis(filePath, sheetName);
 
-            //------------解析price-------------------
-            excelAnalysis = new PriceAnalysis();
+            //------------解析unit---------------------
+            excelAnalysis = new UnitAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析product.impex------------------
+            excelAnalysis = new ProductExtendAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析products-classification_zh.impex-------
+            excelAnalysis = new ClassificationExtendAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
             //------------解析extend price------------
@@ -50,38 +58,24 @@ public class AnalysisStrategy {
             excelAnalysis = new SupplierZhAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
-            //------------解析unit---------------------
-            excelAnalysis = new UnitAnalysis();
+        } else if ("3".equals(CATEGORY)) {
+            excelAnalysis = new ProductAnalysis();
+            //------------解析products-----------------
             excelAnalysis.analysis(filePath, sheetName);
-        } else if ("2".equals(CATEGORY)) {
-
-            //------------解析product.impex------------------
-            excelAnalysis = new ProductExtendAnalysis();
-            excelAnalysis.analysis(filePath, sheetName);
-
-            //------------解析products-classification_zh.impex-------
-            excelAnalysis = new ClassificationExtendAnalysis();
-            excelAnalysis.analysis(filePath, sheetName);
-
-            //------------解析products-prices.impex----------------
-            excelAnalysis = new PriceExtendAnalysis();
-            excelAnalysis.analysis(filePath, sheetName);
-
-            //------------解析stockLevels.impex-----------------
-            excelAnalysis = new StockLevelsExtendAnalysis();
-            excelAnalysis.analysis(filePath, sheetName);
-        } else {
             //------------解析user-groups.impex > b2bunit-----------------
             excelAnalysis = new B2bUnitAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析user-groups.impex > b2baddress----------------
+            excelAnalysis = new B2bAddressAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
             //------------解析user-groups.impex > b2bcustomer------
             excelAnalysis = new B2bCustomerAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
-            //------------解析user-groups.impex > b2baddress----------------
-            excelAnalysis = new B2bAddressAnalysis();
-            excelAnalysis.analysis(filePath, sheetName);
+        } else {
+            throw new RuntimeException("类型输入错误，错误的类型：" + CATEGORY);
         }
 
 

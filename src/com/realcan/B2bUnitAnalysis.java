@@ -9,10 +9,14 @@ import java.util.Set;
 public class B2bUnitAnalysis extends ExcelAnalysis {
     @Override
     void analysis(String filePath, String sheetName) {
-        for (int i = 0; i < 5; i++) {
+        result.add("");
+        result.add("");
+        result.add("!!!上方数据无用，仅作加载数据使用");
+        for (int i = 0; i < 3; i++) {
             result.add("");
         }
-        result.add("--------------------unitanalysis start--------------");
+        result.add("--------------------user-groups.impex start--------------");
+        result.add(">>>>>>>>>>>>>>>> B2BUnit start");
         Set<String> tmp = new HashSet<>();
         for (Map<String, String> userMapDatum : ExcelUtil.userMapData) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -35,6 +39,6 @@ public class B2bUnitAnalysis extends ExcelAnalysis {
             tmp.add(stringBuilder.toString());
         }
         result.addAll(tmp);
-        result.add("-------------------unitanalysis end-------------------");
+        result.add(">>>>>>>>>>>>>>>>>>> B2BUnit end");
     }
 }

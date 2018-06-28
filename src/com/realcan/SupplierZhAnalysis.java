@@ -25,10 +25,13 @@ public class SupplierZhAnalysis extends ExcelAnalysis {
                     .append(";");
             strings.add(stringBuilder.toString());
         }
+        result.add(">>>>>>>>>>>>>>>> category1 start");
         result.addAll(strings);
+        result.add(">>>>>>>>>>>>>>>> category1 end");
         for (int i = 0; i < 3; i++) {
             result.add("");
         }
+        result.add(">>>>>>>>>>>>>>> category2 start");
         for (String brand : ExcelUtil.getAllBrands()) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";;")
@@ -40,6 +43,7 @@ public class SupplierZhAnalysis extends ExcelAnalysis {
                     .append(";");
             result.add(stringBuilder.toString());
         }
+        result.add(">>>>>>>>>>>>>> category2 end");
         result.add("------------------suppliers-zh.impex    end-------------------");
     }
 }

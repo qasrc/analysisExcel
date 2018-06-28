@@ -12,7 +12,7 @@ public class StockLevelsAnalysis extends ExcelAnalysis {
         }
         List<String> productTemp = new ArrayList<>();
         result.add("------------------------products-stocklevels.impex    start---------------------");
-        result.add("++++++++++++++++++++stocklevel");
+        result.add(">>>>>>>>>>>>>>>>>>> stocklevel start");
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
             StringBuilder stocklevels = new StringBuilder();
             StringBuilder product = new StringBuilder();
@@ -30,8 +30,11 @@ public class StockLevelsAnalysis extends ExcelAnalysis {
             productTemp.add(product.toString());
         }
 
-        result.add("+++++++++++++++++++product");
+        result.add(">>>>>>>>>>>>>>>>> stocklevel end");
+        result.add("");
+        result.add(">>>>>>>>>>>>>>>>>>>> product start");
         result.addAll(productTemp);
+        result.add(">>>>>>>>>>>>>>>>>>> product end");
         result.add("--------------------------products-stocklevels.impex    end----------------------");
     }
 }

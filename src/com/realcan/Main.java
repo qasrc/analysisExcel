@@ -57,7 +57,7 @@ public class Main {
         if (StringUtils.isBlank(userSheet)) {
             userSheet = "Sheet1";
         }
-        System.out.println("请选择生成impex文件类型：1.baseProduct   2.extendProduct  3.用户测试数据");
+        System.out.println("请选择生成impex文件类型：1.商品测试数据  3.用户测试数据 ");
         String category = input.nextLine();
         System.out.println("开始初始化生产厂商对照表数据");
         ExcelUtil.initManufacturerData(maPath, maSheet);

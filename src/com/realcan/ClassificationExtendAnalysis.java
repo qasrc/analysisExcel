@@ -8,11 +8,6 @@ public class ClassificationExtendAnalysis extends ExcelAnalysis {
     @Override
     void analysis(String filePath, String sheetName) {
         List<Map<String, String>> data = ExcelUtil.mapData;
-        for (int i = 0; i < 3; i++) {
-            result.add("");
-        }
-        result.add("----------------------上面product.impex文件无用！！！！！！！！！！！！---------------------");
-
         for (int i = 0; i < 5; i++) {
             result.add("");
         }

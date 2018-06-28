@@ -12,7 +12,7 @@ public class SuppliersAnalysis extends ExcelAnalysis {
             result.add("");
         }
         result.add("---------------suppliers.impex   start------------------");
-        result.add("++++++++++++++categories");
+        result.add(">>>>>>>>>>>>>> categories start");
         //使用set集合去除重复数据
         Set<String> tmp = new HashSet<>();
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
@@ -24,7 +24,8 @@ public class SuppliersAnalysis extends ExcelAnalysis {
 
         }
         result.addAll(tmp);
-        result.add("++++++++++++++++brands");
+        result.add(">>>>>>>>>>>>>> categorys end");
+        result.add(">>>>>>>>>>>>>> brands start");
         for (String brand : ExcelUtil.getAllBrands()) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";;")
@@ -32,6 +33,7 @@ public class SuppliersAnalysis extends ExcelAnalysis {
                     .append(";brands");
             result.add(stringBuilder.toString());
         }
+        result.add(">>>>>>>>>>>>>> brands end");
         result.add("------------------suppliers.impex    end-----------------");
     }
 }
