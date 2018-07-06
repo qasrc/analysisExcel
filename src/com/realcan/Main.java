@@ -66,7 +66,7 @@ public class Main {
         ExcelUtil.initUnitData(unitFilePath, unitSheet);
         System.out.println("初始化计量单位对照表数据完成");
         System.out.println("开始初始化用户测试数据");
-        ExcelUtil.initUserData(userFilePath, userSheet);
+        //ExcelUtil.initUserData(userFilePath, userSheet);
         System.out.println("初始化用户测试数据完成");
         System.out.println("开始解析产品列表文件");
 

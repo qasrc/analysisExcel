@@ -1,8 +1,6 @@
 package com.realcan;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.CellType;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -103,26 +101,31 @@ public abstract class ExcelUtil {
     }
 
     private static String getCellValue(Cell cell) {
-        String cellValue;
-        CellType cellType = cell.getCellTypeEnum();
-        switch (cellType) {
-            case STRING:
-                cellValue = cell.getStringCellValue();
-                break;
-            case NUMERIC:
-                cellValue = String.valueOf(((int) cell.getNumericCellValue()));
-                break;
-            case BLANK:
-                cellValue = "";
-                break;
-            case ERROR:
-                cellValue = "";
-                break;
-            default:
-                cellValue = cell.toString();
-                break;
+        if (cell != null) {
+            String cellValue;
+            CellType cellType = cell.getCellTypeEnum();
+            switch (cellType) {
+                case STRING:
+                    cellValue = cell.getStringCellValue();
+                    break;
+                case NUMERIC:
+                    cellValue = String.valueOf(((int) cell.getNumericCellValue()));
+                    break;
+                case BLANK:
+                    cellValue = "";
+                    break;
+                case ERROR:
+                    cellValue = "";
+                    break;
+                default:
+                    cellValue = cell.toString();
+                    break;
+            }
+            return cellValue.trim();
+        } else {
+            return null;
         }
-        return cellValue.trim();
+
     }
 
 
@@ -201,10 +204,9 @@ public abstract class ExcelUtil {
         for (int i = 0; i < numOfRows; i++) {
             Row row = sheet.getRow(i);
             if (row != null) {
-                for (int j = 0; j < row.getLastCellNum(); j++) {
-                    if (i > 0) {
-                        unitMap.put(getCellValue(row.getCell(1)), getCellValue(row.getCell(2)));
-                    }
+                if (i > 0) {
+                    unitMap.put(getCellValue(row.getCell(1)), getCellValue(row.getCell(27)));
+
                 }
             }
         }

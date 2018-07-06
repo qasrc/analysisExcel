@@ -1,7 +1,6 @@
 package com.realcan;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class UnitAnalysis extends ExcelAnalysis {
@@ -12,14 +11,14 @@ public class UnitAnalysis extends ExcelAnalysis {
         }
         result.add(">>>>>>>>>>>>>unit start");
         Set<String> tmp = new HashSet<>();
-        for (Map<String, String> mapDatum : ExcelUtil.mapData) {
+        for (String s : ExcelUtil.unitMap.keySet()) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
-                    .append(ExcelUtil.getUnitNameByCode(mapDatum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
+                    .append(s)
                     .append(";")
-                    .append(ExcelUtil.getUnitNameByCode(mapDatum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
+                    .append(ExcelUtil.unitMap.get(s))
                     .append(";")
-                    .append(mapDatum.get(CellTypeEnum.GAUGE_TICHET.getDescription()));
+                    .append(ExcelUtil.unitMap.get(s));
             tmp.add(stringBuilder.toString());
         }
         result.addAll(tmp);
