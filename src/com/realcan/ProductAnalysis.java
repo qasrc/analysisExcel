@@ -30,7 +30,7 @@ public class ProductAnalysis extends ExcelAnalysis {
                     .append(";")
                     .append(datum.get(CellTypeEnum.MANUFACTURER.getDescription()))
                     .append(";;;")
-                    .append(ExcelUtil.getUnitNameByCode(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())));
+                    .append(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription()));
             result.add(stringBuilder.toString());
         }
         result.add(">>>>>>>>>>>>>>>>>ConsumableProduct end");
