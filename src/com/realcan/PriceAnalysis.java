@@ -14,7 +14,7 @@ public class PriceAnalysis extends ExcelAnalysis {
             stringBuilder.append(";")
                     .append(datum.get(CellTypeEnum.CODE.getDescription()))
                     .append(";B2B_DEFAULT_PRICE_GROUP 1 ")
-                    .append(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription()))
+                    .append(ExcelUtil.unitMap.get(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
                     .append(" = ")
                     .append(ExcelUtil.randomNum())
                     .append(" CNY Y;");

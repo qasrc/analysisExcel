@@ -14,11 +14,13 @@ public class UnitAnalysis extends ExcelAnalysis {
         for (String s : ExcelUtil.unitMap.keySet()) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
-                    .append(s)
+                    .append(ExcelUtil.unitMap.get(s))
                     .append(";")
                     .append(ExcelUtil.unitMap.get(s))
                     .append(";")
-                    .append(ExcelUtil.unitMap.get(s));
+                    .append(s)
+                    .append(";")
+                    .append(s);
             tmp.add(stringBuilder.toString());
         }
         result.addAll(tmp);
