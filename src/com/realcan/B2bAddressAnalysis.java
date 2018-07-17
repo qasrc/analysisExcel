@@ -1,7 +1,5 @@
 package com.realcan;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +33,9 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     .append(userMapDatum.get(UserCellTypeEnum.SOLD_TO_ID.getDescription()))
                     .append(";")
                     .append(userMapDatum.get(UserCellTypeEnum.COMPANYID.getDescription()))
-                    .append("-30-17_sellerOrg");
+                    .append("-30-17_sellerOrg")
+                    .append(";CN-37;")
+                    .append(userMapDatum.get(UserCellTypeEnum.MOBILE_NUM1.getDescription()));
 
             tmp.add(stringBuilder.toString());
         }

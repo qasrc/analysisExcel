@@ -66,6 +66,8 @@ public class AnalysisStrategy {
             excelAnalysis = new ProductAnalysis();
             //------------解析products-----------------
             excelAnalysis.analysis(filePath, sheetName);
+
+
             //------------解析user-groups.impex > b2bunit-----------------
             excelAnalysis = new B2bUnitAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
