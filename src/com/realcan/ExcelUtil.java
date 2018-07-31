@@ -18,6 +18,12 @@ public abstract class ExcelUtil {
     public static List<String> userHeadList = new ArrayList<>();
     public static List<Map<String, String>> userMapData = new ArrayList<>();
     /**
+     * key:productCode
+     * value:imageName
+     */
+    public static Map<String, Set<String>> productImagMap = new HashMap<>();
+    public static Set<String> allImags = new HashSet<>();
+    /**
      * 标志初始化是否完成
      */
     public static boolean flag = false;
@@ -213,4 +219,26 @@ public abstract class ExcelUtil {
     }
 
 
+    public static void initProductImage(String imageFilePath) {
+        Sheet sheet = loadSheet(imageFilePath, "工作表1");
+        int numOfRows = sheet.getLastRowNum() + 1;
+        for (int i = 0; i < numOfRows; i++) {
+            Row row = sheet.getRow(i);
+            if (row != null) {
+                if (i > 0) {
+                    String productCode = getCellValue(row.getCell(0));
+                    String imgName = getCellValue(row.getCell(1));
+                    if (productImagMap.containsKey(productCode)) {
+                        Set<String> imgNames = productImagMap.get(productCode);
+                        imgNames.add(imgName);
+                    } else {
+                        Set<String> imgNames = new HashSet<>();
+                        imgNames.add(imgName);
+                        productImagMap.put(productCode, imgNames);
+                    }
+                    allImags.add(imgName);
+                }
+            }
+        }
+    }
 }

@@ -62,6 +62,10 @@ public class AnalysisStrategy {
             excelAnalysis = new ManufacturerAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
+            //------------解析products-media-----------
+            excelAnalysis = new ProductImgAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
         } else if ("3".equals(CATEGORY)) {
             excelAnalysis = new ProductAnalysis();
             //------------解析products-----------------
