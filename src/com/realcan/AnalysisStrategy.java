@@ -84,6 +84,18 @@ public class AnalysisStrategy {
             excelAnalysis = new B2bCustomerAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
+            //------------解析user-groups.impex > soldwithorg----------
+            excelAnalysis = new SoldWithOrgAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析user-groups.impex > salesman-----------
+            excelAnalysis = new SalesmanAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
+            //------------解析user-groups.impex > b2bunit active------
+            excelAnalysis = new UserB2BUnitAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
         } else {
             throw new RuntimeException("类型输入错误，错误的类型：" + CATEGORY);
         }

@@ -24,10 +24,10 @@ public class Main {
             fileSheet = "Sheet1";
         }
         System.out.println("--------------------------");
-        System.out.println("请输入生产厂商对照表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/生产厂商对照表对照表.xlsx)：");
+        System.out.println("请输入生产厂商对照表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/厂家.xlsx)：");
         String maPath = input.nextLine();
         if (StringUtils.isBlank(maPath)) {
-            maPath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/生产厂商对照表对照表.xlsx";
+            maPath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/厂家.xlsx";
         }
         System.out.println("请输入对照表Sheet名称(默认Sheet1)：");
         String maSheet = input.nextLine();
@@ -47,15 +47,15 @@ public class Main {
             unitSheet = "Sheet1";
         }
         System.out.println("----------------------------");
-        System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/电商平台用户测试数据.xlsx），需要将后两列改为描述1和名称 2:");
+        System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/诊所正式数据修订2.xlsx），需要将后两列改为描述1和名称 2:");
         String userFilePath = input.nextLine();
         if (StringUtils.isBlank(userFilePath)) {
-            userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/电商平台用户测试数据.xlsx";
+            userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/诊所正式数据修订2.xlsx";
         }
-        System.out.println("请输入用户列表Sheet名称（默认Sheet1）:");
+        System.out.println("请输入用户列表Sheet名称（默认工作表1）:");
         String userSheet = input.nextLine();
         if (StringUtils.isBlank(userSheet)) {
-            userSheet = "Sheet1";
+            userSheet = "工作表1";
         }
         System.out.println("---------------------------");
         System.out.println("请输入商品图片对照的文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系.xlsx，Sheet名称：Sheet）");

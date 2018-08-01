@@ -35,4 +35,35 @@ public class B2bCustomerAnalysis extends ExcelAnalysis {
         result.add(">>>>>>>>>>>>>>>>>>>>> RealcanB2BCustomer end");
         result.add("------------------------user-groups.impex end------------------------");
     }
+
+
+    static class B2bCustomer {
+        private String linkMan;
+        private String mobileNum;
+        private String soldToId;
+
+        public String getLinkMan() {
+            return linkMan;
+        }
+
+        public void setLinkMan(String linkMan) {
+            this.linkMan = linkMan;
+        }
+
+        public String getMobileNum() {
+            return mobileNum;
+        }
+
+        public void setMobileNum(String mobileNum) {
+            this.mobileNum = mobileNum;
+        }
+
+        public String getSoldToId() {
+            return soldToId;
+        }
+
+        public void setSoldToId(String soldToId) {
+            this.soldToId = soldToId;
+        }
+    }
 }

@@ -67,13 +67,16 @@ public abstract class ExcelUtil {
     private static void putRowValue(int i, List<String> list, Map<String, String> map, Row row, List<String> userHeadList) {
         if (row != null) {
             for (int j = 0; j < row.getLastCellNum(); j++) {
-                Cell cell = row.getCell(j);
-                if (i == 0) {
-                    userHeadList.add(getCellValue(cell));
-                } else {
-                    map.put(userHeadList.get(j), getCellValue(cell));
+                if (j < 25) {
+                    Cell cell = row.getCell(j);
+                    if (i == 0) {
+                        userHeadList.add(getCellValue(cell));
+                    } else {
+                        map.put(userHeadList.get(j), getCellValue(cell));
+                    }
+                    list.add(getCellValue(cell));
                 }
-                list.add(getCellValue(cell));
+
             }
         }
     }
@@ -109,24 +112,8 @@ public abstract class ExcelUtil {
     private static String getCellValue(Cell cell) {
         if (cell != null) {
             String cellValue;
-            CellType cellType = cell.getCellTypeEnum();
-            switch (cellType) {
-                case STRING:
-                    cellValue = cell.getStringCellValue();
-                    break;
-                case NUMERIC:
-                    cellValue = String.valueOf(((int) cell.getNumericCellValue()));
-                    break;
-                case BLANK:
-                    cellValue = "";
-                    break;
-                case ERROR:
-                    cellValue = "";
-                    break;
-                default:
-                    cellValue = cell.toString();
-                    break;
-            }
+            cell.setCellType(Cell.CELL_TYPE_STRING);
+            cellValue = cell.getStringCellValue();
             return cellValue.trim();
         } else {
             return null;
