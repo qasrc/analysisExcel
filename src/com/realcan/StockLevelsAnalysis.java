@@ -25,7 +25,7 @@ public class StockLevelsAnalysis extends ExcelAnalysis {
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
                     .append(";")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
-                    .append(";pw_warehouse_e");
+                    .append(":pw_warehouse_e");
             result.add(stocklevels.toString());
             productTemp.add(product.toString());
         }

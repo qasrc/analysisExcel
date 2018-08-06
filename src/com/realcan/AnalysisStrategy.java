@@ -50,6 +50,10 @@ public class AnalysisStrategy {
             excelAnalysis = new ProductZhAnalysis();
             excelAnalysis.analysis(filePath, sheetName);
 
+            //------------解析prodductEn---------------
+            excelAnalysis = new ProductEnAnalysis();
+            excelAnalysis.analysis(filePath, sheetName);
+
             //------------解析suppliers---------------
             excelAnalysis = new SuppliersAnalysis();
             excelAnalysis.analysis(filePath, sheetName);

@@ -2,7 +2,6 @@ package com.realcan;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * @author zhangzhan
@@ -10,6 +9,7 @@ import java.util.UUID;
  */
 public class ProductImgAnalysis extends ExcelAnalysis {
     private Map<String, String> imageUUid = new HashMap<>();
+    private static int i = 1;
 
     @Override
     void analysis(String filePath, String sheetName) {
@@ -33,7 +33,7 @@ public class ProductImgAnalysis extends ExcelAnalysis {
         emptyContentToResult();
         result.add(">>>>>>>>>>>>>>MediaContainer start");
         ExcelUtil.allImags.forEach(ele -> {
-            String uuid = UUID.randomUUID().toString();
+            String uuid = String.valueOf(i++);
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";");
             stringBuilder.append(uuid);
@@ -83,6 +83,7 @@ public class ProductImgAnalysis extends ExcelAnalysis {
 
     }
 
+
     private String getGalleryImgs(String productCode) {
         StringBuilder stringBuilder = new StringBuilder();
         ExcelUtil.productImagMap.get(productCode).forEach(ele -> {
@@ -90,7 +91,7 @@ public class ProductImgAnalysis extends ExcelAnalysis {
             stringBuilder.append(",");
         });
         String result = stringBuilder.toString();
-        return result.substring(0, result.length() - 2);
+        return result.substring(0, result.length() - 1);
     }
 
     private void emptyContentToResult() {

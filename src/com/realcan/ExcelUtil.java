@@ -23,6 +23,7 @@ public abstract class ExcelUtil {
      */
     public static Map<String, Set<String>> productImagMap = new HashMap<>();
     public static Set<String> allImags = new HashSet<>();
+    public static Map<String, String> imageProductMap = new HashMap<>();
     /**
      * 标志初始化是否完成
      */
@@ -67,14 +68,15 @@ public abstract class ExcelUtil {
     private static void putRowValue(int i, List<String> list, Map<String, String> map, Row row, List<String> userHeadList) {
         if (row != null) {
             for (int j = 0; j < row.getLastCellNum(); j++) {
-                if (j < 25) {
-                    Cell cell = row.getCell(j);
+                Cell cell = row.getCell(j);
+                if (cell != null) {
                     if (i == 0) {
                         userHeadList.add(getCellValue(cell));
                     } else {
                         map.put(userHeadList.get(j), getCellValue(cell));
                     }
                     list.add(getCellValue(cell));
+
                 }
 
             }
@@ -149,7 +151,7 @@ public abstract class ExcelUtil {
             System.exit(0);
         }
         //去除ID中前面的0
-        char[] chars = id.toCharArray();
+        /*char[] chars = id.toCharArray();
         int index = 0;
         for (char aChar : chars) {
             if (aChar != '0') {
@@ -158,7 +160,7 @@ public abstract class ExcelUtil {
                 index++;
             }
         }
-        id = id.substring(index);
+        id = id.substring(index);*/
         return manufacturerMap.get(id);
     }
 
@@ -223,6 +225,7 @@ public abstract class ExcelUtil {
                         imgNames.add(imgName);
                         productImagMap.put(productCode, imgNames);
                     }
+                    imageProductMap.put(imgName, productCode);
                     allImags.add(imgName);
                 }
             }

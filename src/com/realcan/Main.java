@@ -13,10 +13,10 @@ public class Main {
     //初始化程序
     private static void execute() {
         Scanner input = new Scanner(System.in);
-        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/电商平台测试产品数据.xlsx)：");
+        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式.xlsx)：");
         String filePath = input.nextLine();
         if (StringUtils.isBlank(filePath)) {
-            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/电商平台测试产品数据.xlsx";
+            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式.xlsx";
         }
         System.out.println("请输入产品列表Sheet名称(默认Sheet1)：");
         String fileSheet = input.nextLine();
@@ -66,6 +66,7 @@ public class Main {
 
         System.out.println("请选择生成impex文件类型：1.商品测试数据  3.用户测试数据 ");
         String category = input.nextLine();
+
         System.out.println("初始化生产厂商对照表数据");
         ExcelUtil.initManufacturerData(maPath, maSheet);
         System.out.println("初始化生产厂商对照表数据完成");
@@ -73,7 +74,7 @@ public class Main {
         ExcelUtil.initUnitData(unitFilePath, unitSheet);
         System.out.println("初始化计量单位对照表数据完成");
         System.out.println("初始化用户测试数据");
-        ExcelUtil.initUserData(userFilePath, userSheet);
+        //ExcelUtil.initUserData(userFilePath, userSheet);
         System.out.println("初始化用户测试数据完成");
         System.out.println("初始化商品图片对照表数据");
         ExcelUtil.initProductImage(imageFilePath);
