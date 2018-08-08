@@ -17,6 +17,7 @@ public abstract class ExcelUtil {
     public static Map<String, String> unitMap = new HashMap<>();
     public static List<String> userHeadList = new ArrayList<>();
     public static List<Map<String, String>> userMapData = new ArrayList<>();
+    public static Map<String, String> regionRgMap = new HashMap<>();
     /**
      * key:productCode
      * value:imageName
@@ -24,6 +25,7 @@ public abstract class ExcelUtil {
     public static Map<String, Set<String>> productImagMap = new HashMap<>();
     public static Set<String> allImags = new HashSet<>();
     public static Map<String, String> imageProductMap = new HashMap<>();
+    public static Map<String, String> productPriceMap = new HashMap<>();
     /**
      * 标志初始化是否完成
      */
@@ -73,7 +75,9 @@ public abstract class ExcelUtil {
                     if (i == 0) {
                         userHeadList.add(getCellValue(cell));
                     } else {
-                        map.put(userHeadList.get(j), getCellValue(cell));
+                        if (j < userHeadList.size()) {
+                            map.put(userHeadList.get(j), getCellValue(cell));
+                        }
                     }
                     list.add(getCellValue(cell));
 
@@ -181,16 +185,26 @@ public abstract class ExcelUtil {
     public static void initManufacturerData(String filePath, String sheetName) {
         Sheet sheet = loadSheet(filePath, sheetName);
         int numOfRows = sheet.getLastRowNum() + 1;
+        putvalue(sheet, numOfRows, manufacturerMap);
+    }
+
+    private static void putvalue(Sheet sheet, int numOfRows, Map<String, String> valueMap) {
         for (int i = 0; i < numOfRows; i++) {
             Row row = sheet.getRow(i);
             if (row != null) {
                 for (int j = 0; j < row.getLastCellNum(); j++) {
                     if (i > 0) {
-                        manufacturerMap.put(getCellValue(row.getCell(0)), getCellValue(row.getCell(1)));
+                        valueMap.put(getCellValue(row.getCell(0)), getCellValue(row.getCell(1)));
                     }
                 }
             }
         }
+    }
+
+    public static void initProductPrice(String filePath, String sheetName) {
+        Sheet sheet = loadSheet(filePath, sheetName);
+        int numOfRows = sheet.getLastRowNum() + 1;
+        putvalue(sheet, numOfRows, productPriceMap);
     }
 
     public static void initUnitData(String unitFilePath, String unitSheet) {
@@ -207,8 +221,88 @@ public abstract class ExcelUtil {
         }
     }
 
+    public static void initRegionRgMap() {
+
+        /**
+         * ;10	;CN-11;  北京
+         * ;20	;CN-31;  上海
+         * ;30	;CN-12;  天津
+         * ;40	;CN-15;  内蒙古
+         * ;50	;CN-14;  山西
+         * ;60	;CN-13;  河北
+         * ;70	;CN-21;  辽宁
+         * ;80	;CN-22;  吉林
+         * ;90	;CN-23;  黑龙江
+         * ;100;CN-32;	江苏
+         * ;110;CN-34;	安徽
+         * ;120;CN-37;	山东
+         * ;130;CN-33;	浙江
+         * ;140;CN-36;	江西
+         * ;150;CN-35;	福建
+         * ;160;CN-43;	湖南
+         * ;170;CN-42;	湖北
+         * ;180;CN-41;	河南
+         * ;190;CN-44;	广东
+         * ;200;CN-46;	海南
+         * ;210;CN-45;	广西
+         * ;220;CN-52;	贵州
+         * ;230;CN-51;	四川
+         * ;240;CN-53;	云南
+         * ;250;CN-61;	陕西
+         * ;260;CN-62;	甘肃
+         * ;270;CN-64;	宁夏
+         * ;280;CN-63;	青海
+         * ;290;CN-65;	新疆
+         * ;300;CN-54;	西藏
+         * ;320;CN-50;	重庆
+         * ;330;CN-91;	香港
+         * ;340;CN-92;	澳门
+         * ;350;CN-71;	台湾
+         */
+
+        regionRgMap.put("010", "CN-11");
+        regionRgMap.put("020", "CN-31");
+        regionRgMap.put("030", "CN-12");
+        regionRgMap.put("040", "CN-15");
+        regionRgMap.put("050", "CN-14");
+        regionRgMap.put("060", "CN-13");
+        regionRgMap.put("070", "CN-21");
+        regionRgMap.put("080", "CN-22");
+        regionRgMap.put("090", "CN-23");
+        regionRgMap.put("100", "CN-32");
+        regionRgMap.put("110", "CN-34");
+        regionRgMap.put("120", "CN-37");
+        regionRgMap.put("130", "CN-33");
+        regionRgMap.put("140", "CN-36");
+        regionRgMap.put("150", "CN-35");
+        regionRgMap.put("160", "CN-43");
+        regionRgMap.put("170", "CN-42");
+        regionRgMap.put("180", "CN-41");
+        regionRgMap.put("190", "CN-44");
+        regionRgMap.put("200", "CN-46");
+        regionRgMap.put("210", "CN-45");
+        regionRgMap.put("220", "CN-52");
+        regionRgMap.put("230", "CN-51");
+        regionRgMap.put("240", "CN-53");
+        regionRgMap.put("250", "CN-61");
+        regionRgMap.put("260", "CN-62");
+        regionRgMap.put("270", "CN-64");
+        regionRgMap.put("280", "CN-63");
+        regionRgMap.put("290", "CN-65");
+        regionRgMap.put("300", "CN-54");
+        regionRgMap.put("320", "CN-50");
+        regionRgMap.put("330", "CN-91");
+        regionRgMap.put("340", "CN-92");
+        regionRgMap.put("350", "CN-71");
+    }
+
 
     public static void initProductImage(String imageFilePath) {
+        //productImageStage1(imageFilePath);
+        productImageStage2();
+    }
+
+    public static void productImageStage1(String imageFilePath) {
         Sheet sheet = loadSheet(imageFilePath, "工作表1");
         int numOfRows = sheet.getLastRowNum() + 1;
         for (int i = 0; i < numOfRows; i++) {
@@ -230,5 +324,37 @@ public abstract class ExcelUtil {
                 }
             }
         }
+    }
+
+    public static void productImageStage2() {
+        allImags.add("86341,86340,86339.png");
+        allImags.add("86388,86389,86392,142875,86393,86615,86396,142876,86400.png");
+        allImags.add("86395,193956,193955,193684,193685.png");
+        allImags.add("86410,86412,86413,86414,86415,86617,144773,86404,86616,86405,86406,87566,86407,86403,86408.png");
+        allImags.add("87529,78245,78257,96715,96664,96662,78242,78252,78227,107438,78210,78212,78200,87546,96681,97322,78263,78214,96680,78202,78249,96715,142843,78228,78197,78214,142828,151292,78214,96658,78225,142847,153506.png");
+        allImags.add("142831,140748,140749,140750,142859,142854,142860,142861,145942.png");
+        allImags.add("144748,144771,193950,193952,193949,193948,144772,144749,144750,193945,193944,193947.png");
+        allImags.add("144770,144747,144769,144767.png");
+        allImags.add("144774,144751,144776.png");
+        allImags.add("152264,152266,820299,820300,78192.png");
+        allImags.add("160948,153524,153525.png");
+        allImags.add("193712,193969,193978,193683,193713,193977,193965,193967.png");
+        allImags.add("195910,86374,86377,86378,86379,86380,170399,86374,86383,86799,86385,86386,87681.png");
+
+        allImags.forEach(ele -> {
+            String[] productCodes = ele.split(",");
+            for (String productCode : productCodes) {
+                productCode = productCode.trim();
+                Set<String> images = new HashSet<>();
+                String imageName = ele.substring(ele.lastIndexOf(",") + 1);
+                images.add(imageName);
+                if (!productCode.endsWith(".png")) {
+                    productImagMap.put(productCode, images);
+                } else {
+                    String subProductCode = productCode.substring(0, productCode.indexOf("."));
+                    productImagMap.put(subProductCode, images);
+                }
+            }
+        });
     }
 }

@@ -1,5 +1,6 @@
 package com.realcan;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ProductZhAnalysis extends ExcelAnalysis {
@@ -9,18 +10,25 @@ public class ProductZhAnalysis extends ExcelAnalysis {
             result.add("");
         }
         result.add("-----------------products-zh.impex   start-----------------");
+        Map<String, String> productMap = new HashMap<>();
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
+            String code = mapDatum.get(CellTypeEnum.CODE.getDescription());
+            String desc = mapDatum.get(CellTypeEnum.DESC.getDescription());
+            productMap.put(code, desc);
+        }
+
+        productMap.keySet().forEach(key -> {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
-                    .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
+                    .append(key)
                     .append(";          ;")
-                    .append(mapDatum.get(CellTypeEnum.DESC.getDescription()))
+                    .append(productMap.get(key))
                     .append(";")
-                    .append(mapDatum.get(CellTypeEnum.DESC.getDescription()))
+                    .append(productMap.get(key))
                     .append("<br>;")
-                    .append(mapDatum.get(CellTypeEnum.DESC.getDescription()));
+                    .append(productMap.get(key));
             result.add(stringBuilder.toString());
-        }
+        });
         result.add("---------------products-zh.impex    end------------------");
     }
 }

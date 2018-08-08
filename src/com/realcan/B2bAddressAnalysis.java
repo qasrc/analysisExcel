@@ -38,6 +38,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     company.add(ele.get(UserCellTypeEnum.COMPANYID.getDescription()));
                     b2bAddress.setCompany(company);
                     b2bAddress.setMobileNum1(ele.get(UserCellTypeEnum.MOBILE_NUM1.getDescription()));
+                    b2bAddress.setRg(ele.get(UserCellTypeEnum.RG.getDescription()));
                     b2bAddressMap.put(shipToId, b2bAddress);
                 }
             }
@@ -64,7 +65,9 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     .append(b2bAddress.getSoldToId())
                     .append(";")
                     .append(getCompanys(b2bAddress))
-                    .append(";CN-37;")
+                    .append(";")
+                    .append(getRegionByRg(b2bAddress.getRg()))
+                    .append(";")
                     .append(b2bAddress.getMobileNum1())
                     .append(";RealcanID_")
                     .append(b2bAddress.getSoldToId());
@@ -90,6 +93,13 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
         return resultStr.substring(0, resultStr.length() - 1);
     }
 
+    private String getRegionByRg(String rg) {
+        if (ExcelUtil.regionRgMap.size() == 0) {
+            ExcelUtil.initRegionRgMap();
+        }
+        return ExcelUtil.regionRgMap.get(rg);
+    }
+
     static class B2bAddress {
         private String shipToId;
         private String soldToId;
@@ -100,6 +110,15 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
         private String name2;
         private Set<String> company;
         private String mobileNum1;
+        private String rg;
+
+        public String getRg() {
+            return rg;
+        }
+
+        public void setRg(String rg) {
+            this.rg = rg;
+        }
 
         public String getShipToId() {
             return shipToId;

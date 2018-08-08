@@ -1,8 +1,6 @@
 package com.realcan;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StockLevelsAnalysis extends ExcelAnalysis {
     @Override
@@ -13,18 +11,25 @@ public class StockLevelsAnalysis extends ExcelAnalysis {
         List<String> productTemp = new ArrayList<>();
         result.add("------------------------products-stocklevels.impex    start---------------------");
         result.add(">>>>>>>>>>>>>>>>>>> stocklevel start");
+
+        Set<String> productCode = new HashSet<>();
+
         for (Map<String, String> mapDatum : ExcelUtil.mapData) {
+            productCode.add(mapDatum.get(CellTypeEnum.CODE.getDescription()));
+        }
+
+        for (String code : productCode) {
             StringBuilder stocklevels = new StringBuilder();
             StringBuilder product = new StringBuilder();
             stocklevels.append(";")
-                    .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
+                    .append(code)
                     .append(";pw_warehouse_e;")
                     .append(ExcelUtil.randomNum())
                     .append(";notSpecified");
             product.append(";")
-                    .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
+                    .append(code)
                     .append(";")
-                    .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
+                    .append(code)
                     .append(":pw_warehouse_e");
             result.add(stocklevels.toString());
             productTemp.add(product.toString());

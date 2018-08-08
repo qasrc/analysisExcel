@@ -19,10 +19,25 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
                     .append(";B2B_DEFAULT_PRICE_GROUP 1 ")
                     .append(ExcelUtil.unitMap.get(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
                     .append(" = ")
-                    .append(ExcelUtil.randomNum())
+                    .append(getPriceByCode(datum.get(CellTypeEnum.CODE.getDescription())))
                     .append(" CNY Y;");
             result.add(stringBuilder.toString());
         }
         result.add("-----------------------products-price.impex  end------------------");
+    }
+
+
+    private String getPriceByCode(String productCode) {
+        char[] chars = productCode.toCharArray();
+        int index = 0;
+        for (char aChar : chars) {
+            if (aChar != '0') {
+                break;
+            } else {
+                index++;
+            }
+        }
+        productCode = productCode.substring(index);
+        return ExcelUtil.productPriceMap.get(productCode);
     }
 }

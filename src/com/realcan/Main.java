@@ -13,10 +13,10 @@ public class Main {
     //初始化程序
     private static void execute() {
         Scanner input = new Scanner(System.in);
-        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式.xlsx)：");
+        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式2.xlsx)：");
         String filePath = input.nextLine();
         if (StringUtils.isBlank(filePath)) {
-            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式.xlsx";
+            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式2.xlsx";
         }
         System.out.println("请输入产品列表Sheet名称(默认Sheet1)：");
         String fileSheet = input.nextLine();
@@ -64,6 +64,13 @@ public class Main {
             imageFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系.xlsx";
         }
 
+        System.out.println("--------------------------");
+        System.out.println("请输入商品价格文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格.xlsx，Sheet名称：工作表1）");
+        String priceFilePath = input.nextLine();
+        if (StringUtils.isBlank(priceFilePath)) {
+            priceFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格.xlsx";
+        }
+
         System.out.println("请选择生成impex文件类型：1.商品测试数据  3.用户测试数据 ");
         String category = input.nextLine();
 
@@ -74,11 +81,15 @@ public class Main {
         ExcelUtil.initUnitData(unitFilePath, unitSheet);
         System.out.println("初始化计量单位对照表数据完成");
         System.out.println("初始化用户测试数据");
-        //ExcelUtil.initUserData(userFilePath, userSheet);
+        ExcelUtil.initUserData(userFilePath, userSheet);
         System.out.println("初始化用户测试数据完成");
         System.out.println("初始化商品图片对照表数据");
         ExcelUtil.initProductImage(imageFilePath);
         System.out.println("初始化商品图片对照表完成");
+        System.out.println("初始化商品价格对照表");
+        ExcelUtil.initProductPrice(priceFilePath, "工作表1");
+        System.out.println("初始化商品价格对照表完成");
+
         System.out.println("开始解析产品列表文件");
         AnalysisStrategy analysisStrategy = AnalysisStrategy.getAnalysisStrategy(category);
         analysisStrategy.analysis(filePath, fileSheet);
