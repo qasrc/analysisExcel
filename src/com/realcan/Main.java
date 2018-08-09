@@ -18,10 +18,10 @@ public class Main {
         if (StringUtils.isBlank(filePath)) {
             filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式2.xlsx";
         }
-        System.out.println("请输入产品列表Sheet名称(默认Sheet1)：");
+        System.out.println("请输入产品列表Sheet名称(默认工作表1)：");
         String fileSheet = input.nextLine();
         if (StringUtils.isBlank(fileSheet)) {
-            fileSheet = "Sheet1";
+            fileSheet = "工作表1";
         }
         System.out.println("--------------------------");
         System.out.println("请输入生产厂商对照表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/厂家.xlsx)：");
@@ -58,17 +58,17 @@ public class Main {
             userSheet = "工作表1";
         }
         System.out.println("---------------------------");
-        System.out.println("请输入商品图片对照的文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系.xlsx，Sheet名称：Sheet）");
+        System.out.println("请输入商品图片对照的文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式1.xlsx，Sheet名称：工作表1）");
         String imageFilePath = input.nextLine();
         if (StringUtils.isBlank(imageFilePath)) {
-            imageFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系.xlsx";
+            imageFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式1.xlsx";
         }
 
         System.out.println("--------------------------");
-        System.out.println("请输入商品价格文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格.xlsx，Sheet名称：工作表1）");
+        System.out.println("请输入商品价格文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式1价格.xls，Sheet名称：工作表1）");
         String priceFilePath = input.nextLine();
         if (StringUtils.isBlank(priceFilePath)) {
-            priceFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格.xlsx";
+            priceFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式1价格.xls";
         }
 
         System.out.println("请选择生成impex文件类型：1.商品测试数据  3.用户测试数据 ");

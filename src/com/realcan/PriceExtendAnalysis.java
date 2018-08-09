@@ -40,4 +40,6 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
         productCode = productCode.substring(index);
         return ExcelUtil.productPriceMap.get(productCode);
     }
+
+
 }
