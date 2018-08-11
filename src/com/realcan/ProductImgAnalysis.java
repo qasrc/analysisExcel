@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class ProductImgAnalysis extends ExcelAnalysis {
     private Map<String, String> imageUUid = new HashMap<>();
-    private static int i = 84;
+    private static int i = 95;
 
     @Override
     void analysis(String filePath, String sheetName) {
@@ -49,17 +49,24 @@ public class ProductImgAnalysis extends ExcelAnalysis {
         result.add(">>>>>>>>>>>>>>>>>>>product start");
         Set<String> products = new HashSet<>();
         ExcelUtil.mapData.forEach(ele -> {
-            products.add(ele.get(CellTypeEnum.CODE.getDescription()));
+            if (StringUtils.isNotBlank(ele.get(CellTypeEnum.CODE.getDescription()))) {
+                products.add(ele.get(CellTypeEnum.CODE.getDescription()));
+            }
         });
         products.forEach(key -> {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(";");
-            stringBuilder.append(key);
-            stringBuilder.append(";");
-            stringBuilder.append(ExcelUtil.productImagMap.get(getStr(key)).toArray()[0]);
-            stringBuilder.append(".png;;;;;;");
-            stringBuilder.append(getGalleryImgs(getStr(key)));
-            result.add(stringBuilder.toString());
+            if (StringUtils.isNotBlank(key)) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(";");
+                stringBuilder.append(key);
+                stringBuilder.append(";");
+                Set<String> result1 = ExcelUtil.productImagMap.get(getStr(key));
+                if (result1 != null && result1.size() > 0) {
+                    stringBuilder.append(result1.toArray()[0]);
+                    stringBuilder.append(";;;;;;");
+                    stringBuilder.append(getGalleryImgs(getStr(key)));
+                    result.add(stringBuilder.toString());
+                }
+            }
         });
         result.add(">>>>>>>>>>>>>>>>>>product end");
 
@@ -74,7 +81,10 @@ public class ProductImgAnalysis extends ExcelAnalysis {
         Set<String> images = new HashSet<>();
         ExcelUtil.mapData.forEach(ele -> {
             String code = ele.get(CellTypeEnum.CODE.getDescription());
-            codes.add(getStr(code));
+            if (StringUtils.isNotBlank(code)) {
+                codes.add(getStr(code));
+
+            }
         });
         ExcelUtil.productImagMap.keySet().forEach(images::add);
         codes.removeAll(images);

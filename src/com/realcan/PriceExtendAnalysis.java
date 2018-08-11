@@ -1,5 +1,7 @@
 package com.realcan;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Map;
 
 public class PriceExtendAnalysis extends ExcelAnalysis {
@@ -10,18 +12,20 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
         }
         result.add("------------------------products-price.impex  start-----------------");
         for (Map<String, String> datum : ExcelUtil.mapData) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(";")
-                    .append(datum.get(CellTypeEnum.CODE.getDescription()))
-                    .append("_")
-                    .append(datum.get(CellTypeEnum.COMPANY.getDescription()))
-                    .append("-30-17")
-                    .append(";B2B_DEFAULT_PRICE_GROUP 1 ")
-                    .append(ExcelUtil.unitMap.get(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
-                    .append(" = ")
-                    .append(getPriceByCode(datum.get(CellTypeEnum.CODE.getDescription())))
-                    .append(" CNY Y;");
-            result.add(stringBuilder.toString());
+            if (StringUtils.isNotBlank(datum.get(CellTypeEnum.CODE.getDescription()))) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(";")
+                        .append(datum.get(CellTypeEnum.CODE.getDescription()))
+                        .append("_")
+                        .append(datum.get(CellTypeEnum.COMPANY.getDescription()))
+                        .append("-30-17")
+                        .append(";B2B_DEFAULT_PRICE_GROUP 1 ")
+                        .append(ExcelUtil.unitMap.get(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
+                        .append(" = ")
+                        .append(getPriceByCode(datum.get(CellTypeEnum.CODE.getDescription())))
+                        .append(" CNY Y;");
+                result.add(stringBuilder.toString());
+            }
         }
         result.add("-----------------------products-price.impex  end------------------");
     }

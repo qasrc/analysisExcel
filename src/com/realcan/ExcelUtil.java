@@ -1,5 +1,6 @@
 package com.realcan;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
@@ -311,16 +312,19 @@ public abstract class ExcelUtil {
                 if (i > 0) {
                     String productCode = getCellValue(row.getCell(0));
                     String imgName = getCellValue(row.getCell(1));
-                    if (productImagMap.containsKey(productCode)) {
-                        Set<String> imgNames = productImagMap.get(productCode);
-                        imgNames.add(imgName);
-                    } else {
-                        Set<String> imgNames = new HashSet<>();
-                        imgNames.add(imgName);
-                        productImagMap.put(productCode, imgNames);
+                    if (StringUtils.isNotBlank(imgName)) {
+                        if (productImagMap.containsKey(productCode)) {
+                            Set<String> imgNames = productImagMap.get(productCode);
+                            imgNames.add(imgName);
+                        } else {
+                            Set<String> imgNames = new HashSet<>();
+                            imgNames.add(imgName);
+                            productImagMap.put(productCode, imgNames);
+                        }
+                        imageProductMap.put(imgName, productCode);
+                        allImags.add(imgName);
                     }
-                    imageProductMap.put(imgName, productCode);
-                    allImags.add(imgName);
+
                 }
             }
         }
