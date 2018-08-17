@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class ProductImgAnalysis extends ExcelAnalysis {
     private Map<String, String> imageUUid = new HashMap<>();
-    private static int i = 95;
+    private static int i = 128;
 
     @Override
     void analysis(String filePath, String sheetName) {
@@ -26,7 +26,7 @@ public class ProductImgAnalysis extends ExcelAnalysis {
             stringBuilder.append(ele);
             stringBuilder.append(";$siteResource/realcanImages/");
             stringBuilder.append(ele);
-            stringBuilder.append(".png;;;");
+            stringBuilder.append(".jpg;;;");
             result.add(stringBuilder.toString());
         });
         result.add(">>>>>>>>>>>>>>>>>>>media end");

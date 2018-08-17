@@ -28,7 +28,7 @@ public class ProductAnalysis extends ExcelAnalysis {
                 stringBuilder.append(";")
                         .append(datum.get(CellTypeEnum.CODE.getDescription()))
                         .append(";")
-                        .append("5200")
+                        .append(datum.get(CellTypeEnum.PRODUCT_LINE.getDescription()))
                         .append(",")
                         .append(datum.get(CellTypeEnum.COMMONNAME.getDescription()))
                         .append(",")
