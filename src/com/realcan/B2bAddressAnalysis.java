@@ -39,6 +39,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     b2bAddress.setCompany(company);
                     b2bAddress.setMobileNum1(ele.get(UserCellTypeEnum.MOBILE_NUM1.getDescription()));
                     b2bAddress.setRg(ele.get(UserCellTypeEnum.RG.getDescription()));
+                    b2bAddress.setDefaultAddress(ele.get(UserCellTypeEnum.DEFAULT.getDescription()));
                     b2bAddressMap.put(shipToId, b2bAddress);
                 }
             }
@@ -71,7 +72,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     .append(b2bAddress.getMobileNum1())
                     .append(";RealcanID_")
                     .append(b2bAddress.getSoldToId());
-            if (b2bAddress.getSoldToId().equals(key)) {
+            if ("1".equals(b2bAddress.getDefaultAddress())) {
                 stringBuilder.append(";true");
             } else {
                 stringBuilder.append(";false");
@@ -111,6 +112,15 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
         private Set<String> company;
         private String mobileNum1;
         private String rg;
+        private String defaultAddress;
+
+        public String getDefaultAddress() {
+            return defaultAddress;
+        }
+
+        public void setDefaultAddress(String defaultAddress) {
+            this.defaultAddress = defaultAddress;
+        }
 
         public String getRg() {
             return rg;
