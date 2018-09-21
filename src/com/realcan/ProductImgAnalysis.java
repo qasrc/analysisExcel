@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class ProductImgAnalysis extends ExcelAnalysis {
     private Map<String, String> imageUUid = new HashMap<>();
-    private static int i = 151;
+    private static int i = 200;
 
     @Override
     void analysis(String filePath, String sheetName) {

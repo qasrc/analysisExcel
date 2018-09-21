@@ -19,7 +19,7 @@ public class SoldWithOrgAnalysis extends ExcelAnalysis {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
                     .append(ele.get(UserCellTypeEnum.COMPANYID.getDescription()))
-                    .append("-30-17_sellerOrg;")
+                    .append("-30-11_sellerOrg;")
                     .append(ele.get(UserCellTypeEnum.SOLD_TO_ID.getDescription()));
             orgs.add(stringBuilder.toString());
         });

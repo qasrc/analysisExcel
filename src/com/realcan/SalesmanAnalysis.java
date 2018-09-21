@@ -21,7 +21,7 @@ public class SalesmanAnalysis extends ExcelAnalysis {
         Map<String, Salesman> salesmanMap = new HashMap<>();
         ExcelUtil.userMapData.forEach(ele -> {
             String salesmanId = ele.get(UserCellTypeEnum.SALESMAN_ID.getDescription());
-            String soldwithorg = ele.get(UserCellTypeEnum.COMPANYID.getDescription()) + "-30-17_sellerOrg:" + ele.get(UserCellTypeEnum.SOLD_TO_ID.getDescription());
+            String soldwithorg = ele.get(UserCellTypeEnum.COMPANYID.getDescription()) + "-30-11_sellerOrg:" + ele.get(UserCellTypeEnum.SOLD_TO_ID.getDescription());
             if (salesmanMap.containsKey(salesmanId)) {
                 Salesman salesman = salesmanMap.get(salesmanId);
                 Set<String> soldwithorgs = salesman.getSoldWithOrg();

@@ -31,6 +31,7 @@ public class B2bUnitAnalysis extends ExcelAnalysis {
                 Set<String> companys = new HashSet<>();
                 companys.add(ele.get(UserCellTypeEnum.COMPANYID.getDescription()));
                 b2bUnit.setCompany(companys);
+                b2bUnit.setDivision(ele.get(UserCellTypeEnum.DIVISION.getDescription()));
                 Set<String> shipToIds = new HashSet<>();
                 shipToIds.add(ele.get(UserCellTypeEnum.SHIP_TO_ID.getDescription()));
                 b2bUnit.setShipToId(shipToIds);
@@ -68,7 +69,9 @@ public class B2bUnitAnalysis extends ExcelAnalysis {
         StringBuilder stringBuilder = new StringBuilder();
         b2bUnit.getCompany().forEach(ele -> {
             stringBuilder.append(ele)
-                    .append("-30-17_sellerOrg,");
+                    .append("-30-")
+                    .append(b2bUnit.getDivision())
+                    .append("_sellerOrg,");
         });
         String resultStr = stringBuilder.toString();
         return resultStr.substring(0, resultStr.length() - 1);
@@ -91,6 +94,15 @@ public class B2bUnitAnalysis extends ExcelAnalysis {
         String hospitalName;
         Set<String> company;
         Set<String> shipToId;
+        String division;
+
+        public String getDivision() {
+            return division;
+        }
+
+        public void setDivision(String division) {
+            this.division = division;
+        }
 
         public String getSoldToId() {
             return soldToId;

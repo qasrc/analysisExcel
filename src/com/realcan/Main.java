@@ -1,6 +1,7 @@
 package com.realcan;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.util.Scanner;
 
@@ -13,10 +14,10 @@ public class Main {
     //初始化程序
     private static void execute() {
         Scanner input = new Scanner(System.in);
-        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式6.xlsx)：");
+        System.out.println("请输入产品列表文件路径(默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式11.xlsx)：");
         String filePath = input.nextLine();
         if (StringUtils.isBlank(filePath)) {
-            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式6.xlsx";
+            filePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式11.xlsx";
         }
         System.out.println("请输入产品列表Sheet名称(默认工作表1)：");
         String fileSheet = input.nextLine();
@@ -50,7 +51,7 @@ public class Main {
         System.out.println("请输入用户列表文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/诊所正式数据修订3.xlsx），需要将后两列改为描述1和名称 2:");
         String userFilePath = input.nextLine();
         if (StringUtils.isBlank(userFilePath)) {
-            userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/诊所正式数据修订3.xlsx";
+            userFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/诊所正式数据增量4.xlsx";
         }
         System.out.println("请输入用户列表Sheet名称（默认工作表1）:");
         String userSheet = input.nextLine();
@@ -58,17 +59,17 @@ public class Main {
             userSheet = "工作表1";
         }
         System.out.println("---------------------------");
-        System.out.println("请输入商品图片对照的文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式6.xlsx，Sheet名称：工作表1）");
+        System.out.println("请输入商品图片对照的文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式7.xlsx，Sheet名称：工作表1）");
         String imageFilePath = input.nextLine();
         if (StringUtils.isBlank(imageFilePath)) {
-            imageFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式6.xlsx";
+            imageFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/物料图片对应关系正式7.xlsx";
         }
 
         System.out.println("--------------------------");
-        System.out.println("请输入商品价格文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格6.xlsx，Sheet名称：工作表1）");
+        System.out.println("请输入商品价格文件路径（默认/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格7.xlsx，Sheet名称：工作表1）");
         String priceFilePath = input.nextLine();
         if (StringUtils.isBlank(priceFilePath)) {
-            priceFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/口腔数据正式价格6.xlsx";
+            priceFilePath = "/Users/zhangzhan/realcanwork/hybris开发/增量数据/111.xlsx";
         }
 
         System.out.println("请选择生成impex文件类型：1.商品数据  3.用户数据 ");
@@ -98,4 +99,23 @@ public class Main {
 
     }
 
+
+    @Test
+    public void test() {
+        Main main = new Main();
+        System.out.println();
+    }
+
+    private String removeStarWithZero(String str) {
+        char[] chars = str.toCharArray();
+        int index = 0;
+        for (char aChar : chars) {
+            if (aChar == '0') {
+                index++;
+            } else {
+                break;
+            }
+        }
+        return str.substring(index);
+    }
 }

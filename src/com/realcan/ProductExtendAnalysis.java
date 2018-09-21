@@ -15,7 +15,7 @@ public class ProductExtendAnalysis extends ExcelAnalysis {
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
                     .append("_")
                     .append(mapDatum.get(CellTypeEnum.COMPANY.getDescription()))
-                    .append("-30-17;")
+                    .append("-30-12;")
                     .append(mapDatum.get(CellTypeEnum.CODE.getDescription()))
                     .append(";;")
                     .append(mapDatum.get(CellTypeEnum.DESC.getDescription()))

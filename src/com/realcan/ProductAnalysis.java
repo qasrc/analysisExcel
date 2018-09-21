@@ -1,5 +1,7 @@
 package com.realcan;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.Set;
 
 public class ProductAnalysis extends ExcelAnalysis {
     @Override
-    public void analysis(String filePath,String sheetName) {
+    public void analysis(String filePath, String sheetName) {
         if (!ExcelUtil.flag) {
             ExcelUtil.initSheetData(filePath, sheetName);
         }
@@ -32,7 +34,7 @@ public class ProductAnalysis extends ExcelAnalysis {
                         .append(",")
                         .append(datum.get(CellTypeEnum.COMMONNAME.getDescription()))
                         .append(",")
-                        .append(datum.get(CellTypeEnum.BRAND.getDescription()))
+                        .append(getBrand(datum.get(CellTypeEnum.BRAND.getDescription())))
                         .append(",")
                         .append("B2B_Seller")
                         .append(";")
@@ -47,5 +49,14 @@ public class ProductAnalysis extends ExcelAnalysis {
         }
         result.add(">>>>>>>>>>>>>>>>>ConsumableProduct end");
 
+    }
+
+
+    private String getBrand(String brand) {
+        if (StringUtils.isNotBlank(brand) && !"null".equalsIgnoreCase(brand)) {
+            return brand;
+        } else {
+            return "";
+        }
     }
 }

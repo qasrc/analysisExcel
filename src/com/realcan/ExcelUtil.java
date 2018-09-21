@@ -261,15 +261,15 @@ public abstract class ExcelUtil {
          * ;350;CN-71;	台湾
          */
 
-        regionRgMap.put("010", "CN-11");
-        regionRgMap.put("020", "CN-31");
-        regionRgMap.put("030", "CN-12");
-        regionRgMap.put("040", "CN-15");
-        regionRgMap.put("050", "CN-14");
-        regionRgMap.put("060", "CN-13");
-        regionRgMap.put("070", "CN-21");
-        regionRgMap.put("080", "CN-22");
-        regionRgMap.put("090", "CN-23");
+        regionRgMap.put("10", "CN-11");
+        regionRgMap.put("20", "CN-31");
+        regionRgMap.put("30", "CN-12");
+        regionRgMap.put("40", "CN-15");
+        regionRgMap.put("50", "CN-14");
+        regionRgMap.put("60", "CN-13");
+        regionRgMap.put("70", "CN-21");
+        regionRgMap.put("80", "CN-22");
+        regionRgMap.put("90", "CN-23");
         regionRgMap.put("100", "CN-32");
         regionRgMap.put("110", "CN-34");
         regionRgMap.put("120", "CN-37");

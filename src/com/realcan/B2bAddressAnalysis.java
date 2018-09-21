@@ -53,7 +53,6 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
                     .append(";")
                     .append(b2bAddress.getStreetName())
                     .append(";")
-                    .append(b2bAddress.getPostalCode())
                     .append(";")
                     .append(b2bAddress.getDesc1())
                     .append(";")
@@ -88,7 +87,7 @@ public class B2bAddressAnalysis extends ExcelAnalysis {
         StringBuilder stringBuilder = new StringBuilder();
         b2bAddress.getCompany().forEach(ele -> {
             stringBuilder.append(ele)
-                    .append("-30-17_sellerOrg,");
+                    .append("-30-11_sellerOrg,");
         });
         String resultStr = stringBuilder.toString();
         return resultStr.substring(0, resultStr.length() - 1);

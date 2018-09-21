@@ -20,7 +20,7 @@ public class UserB2BUnitAnalysis extends ExcelAnalysis {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(";")
                     .append(ele)
-                    .append(";true");
+                    .append(";false");
             result.add(stringBuilder.toString());
         });
 

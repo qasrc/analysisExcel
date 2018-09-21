@@ -24,7 +24,7 @@ public class StockLevelsAnalysis extends ExcelAnalysis {
             stocklevels.append(";")
                     .append(code)
                     .append(";pw_warehouse_e;")
-                    .append(ExcelUtil.randomNum())
+                    .append("0")
                     .append(";notSpecified");
             product.append(";")
                     .append(code)

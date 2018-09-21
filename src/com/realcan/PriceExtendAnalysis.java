@@ -18,7 +18,7 @@ public class PriceExtendAnalysis extends ExcelAnalysis {
                         .append(datum.get(CellTypeEnum.CODE.getDescription()))
                         .append("_")
                         .append(datum.get(CellTypeEnum.COMPANY.getDescription()))
-                        .append("-30-17")
+                        .append("-30-12")
                         .append(";B2B_DEFAULT_PRICE_GROUP 1 ")
                         .append(ExcelUtil.unitMap.get(datum.get(CellTypeEnum.GAUGE_TICHET.getDescription())))
                         .append(" = ")
